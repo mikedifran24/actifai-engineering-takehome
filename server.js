@@ -2,6 +2,8 @@
 
 const express = require('express');
 const seeder = require('./seed');
+const userRoutes = require('./routes/users');
+const groupRoutes = require('./routes/groups');
 
 // Constants
 const PORT = 3000;
@@ -19,7 +21,8 @@ async function start() {
     res.send('Hello World');
   });
 
-  // Write your endpoints here
+  app.use('/users', userRoutes);
+  app.use('/groups', groupRoutes);
 
   app.listen(PORT, HOST);
   console.log(`Server is running on http://${HOST}:${PORT}`);
