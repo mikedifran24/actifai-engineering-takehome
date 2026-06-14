@@ -21,7 +21,7 @@ Your job is to build the API that will deliver data to this dashboard. In additi
 would like to see you think about what additional data/metrics would be useful to add.
 
 At a minimum, write one endpoint that returns time series data for user sales i.e. a list of rows, where each row
-corresponds to a time window and information about sales. When you design the endpoint, think  about what query
+corresponds to a time window and information about sales. When you design the endpoint, think about what query
 parameters and options you want to support, to allow flexibility for the front-end team.
 
 ## Codebase
@@ -35,9 +35,22 @@ define your endpoints.
 2. Run `npm i` to install dependencies
 3. Run `docker-compose up` to compile and run the images.
 4. You now have a database and server running on your machine. You can test it by navigating to `http://localhost:3000/health` in
-your browser. You should see a "Hello World" message.
-
+   your browser. You should see a "Hello World" message.
 
 ## Help
 
 If you have any questions, feel free to reach out to your interview scheduler for clarification!
+
+## Michael's Implemented Endpoints
+
+#### `GET /users/:id/sales`
+
+Time series sales data for a single user. Supports `granularity` (day/week/month, defaults to month), `start`, and `end` (both YYYY-MM-DD).
+
+#### `GET /groups/:id/sales`
+
+Same as above but aggregated across all users in the group. Same query params.
+
+#### `GET /groups/:id/leaderboard?month=YYYY-MM`
+
+Ranks all users in the group by revenue for a given month. Returns total revenue, avg revenue, sale count, and rank per user.
